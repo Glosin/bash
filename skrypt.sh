@@ -9,7 +9,8 @@ elif [[ "$1" == "--logs" || "$1" == "-l" ]] then
         num_files=100
     fi
     for ((i=1; i<=num_files; i++)); do
-        filename="log${i}.txt"
+        filename="log${i}/log${i}.txt"
+        mkdir -p "log${i}"
         echo "Nazwa pliku: $filename" > "$filename"
         echo "Nazwa skryptu: skrypt.sh" >> "$filename"
         current_date=$(date +"%Y-%m-%d")
