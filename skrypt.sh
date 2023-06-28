@@ -15,4 +15,10 @@ elif [[ "$1" == "--logs" ]] then
         current_date=$(date +"%Y-%m-%d")
         echo "Data: $current_date" >> "$filename"
     done
+elif [[ "$1" == "--help" ]]; then
+    echo "Dostępne opcje skryptu:"
+    echo "--date: Wyświetla dzisiejszą date."
+    echo "--logs <liczba> : Tworzy <liczba> plików logx.txt z informacjami."
+    echo "--help : Wyświetla dostępne opcje skryptu."
+    exit 0
 fi
