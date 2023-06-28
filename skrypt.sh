@@ -27,7 +27,8 @@ elif [[ "$1" == "--error" || "$1" == "-e" ]] then
 elif [[ "$1" == "--help" || "$1" == "-h" ]]; then
     echo "Dostępne opcje skryptu:"
     echo "--date, -d: Wyświetla dzisiejszą date."
-    echo "--logs, -l <liczba>: Tworzy <liczba> plików logx.txt z informacjami."
+    echo "--logs, -l <liczba>: Tworzy <liczba> folderów log<liczba> z plikiem log<liczba>.txt z informacjami."
+    echo "--error, -e <liczba>: Tworzy <liczba> folderów error<liczba> z plikiem error<liczba>.txt z informacjami."
     echo "--help, -h: Wyświetla dostępne opcje skryptu."
     exit 0
 elif [[ "$1" == "--init" || "$1" == "-i" ]]; then
