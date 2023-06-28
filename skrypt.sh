@@ -1,21 +1,29 @@
 #!/bin/bash
 
-if [[ "$1" == "--date" || "$1" == "-d" ]]; then
-    current_date=$(date +"%Y-%m-%d")
-    echo "Dzisiejsza data: $current_date"
-elif [[ "$1" == "--logs" || "$1" == "-l" ]] then
-    num_files=$2
+stworz_pliki() {
+    local prefix=$1
+    local num_files=$2
+
     if [[ -z "$num_files" ]]; then
         num_files=100
     fi
     for ((i=1; i<=num_files; i++)); do
-        filename="log${i}/log${i}.txt"
-        mkdir -p "log${i}"
+        local filename="${prefix}${i}/${prefix}${i}.txt"
+        mkdir -p "${prefix}${i}"
         echo "Nazwa pliku: $filename" > "$filename"
         echo "Nazwa skryptu: skrypt.sh" >> "$filename"
-        current_date=$(date +"%Y-%m-%d")
+        local current_date=$(date +"%Y-%m-%d")
         echo "Data: $current_date" >> "$filename"
     done
+}
+
+if [[ "$1" == "--date" || "$1" == "-d" ]]; then
+    current_date=$(date +"%Y-%m-%d")
+    echo "Dzisiejsza data: $current_date"
+elif [[ "$1" == "--logs" || "$1" == "-l" ]] then
+    stworz_pliki "log" "$2"
+elif [[ "$1" == "--error" || "$1" == "-e" ]] then
+    stworz_pliki "error" "$2"
 elif [[ "$1" == "--help" || "$1" == "-h" ]]; then
     echo "Dostępne opcje skryptu:"
     echo "--date, -d: Wyświetla dzisiejszą date."
